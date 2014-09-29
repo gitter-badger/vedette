@@ -1,0 +1,23 @@
+{
+	"name": "legalweb/vedette",
+	"description": "PHP Authentication Library",
+	"keywords": ["php", "authentication", "library", "legalweb", "vedette"],
+	"authors": [
+		{
+			"name": "Bradley Weston",
+			"homepage": "http://bweston.me",
+			"email": "me@bweston.me"
+		}
+	],
+	"require": {
+		"illuminate/database": "~4.1|5"
+	},
+	"require-dev": {
+		"phpspec/phpspec": "~2.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"LW\\Vedette": "src"
+		}
+	}
+}
