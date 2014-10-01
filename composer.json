@@ -1,6 +1,6 @@
 {
 	"name": "legalweb/vedette",
-	"description": "PHP Authentication Library",
+	"description": "PHP Authentication Library for Laravel",
 	"keywords": ["php", "authentication", "library", "legalweb", "vedette"],
 	"authors": [
 		{
