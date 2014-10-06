@@ -92,7 +92,9 @@ class PermissionService {
 			return false;
 		}
 
-		return in_array($permission, $this->permissions->lists('id'));
+		$key = $this->permissions->getEntityKey();
+
+		return in_array($permission, $this->permissions->lists($key));
 	}
 
 	/**
