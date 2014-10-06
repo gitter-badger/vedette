@@ -20,17 +20,31 @@ class IlluminateServiceProvider extends ServiceProvider {
 	/**
 	 * @return void
 	 */
-	public function registerRepositories()
+	protected function registerRepositories()
 	{
-		//
+		$this->app->bind('LW\Vedette\Repositories\UserRepositoryInterface', 'LW\Vedette\Repositories\IlluminateUserRepository');
+		$this->app->bind('LW\Vedette\Repositories\RoleRepositoryInterface', 'LW\Vedette\Repositories\IlluminateRoleRepository');
+		$this->app->bind('LW\Vedette\Repositories\PermissionRepositoryInterface', 'LW\Vedette\Repositories\IlluminatePermissionRepository');
 	}
 
 	/**
 	 * @return void
 	 */
-	public function registerServices()
+	protected function registerServices()
 	{
-		//
+		$this->app->bindShared('LW\Vedette\Services\PermissionService', function()
+		{
+			$roles       = $this->app->make('LW\Vedette\Repositories\RoleRepositoryInterface');
+			$permissions = $this->app->make('LW\Vedette\Repositories\PermissionRepositoryInterface');
+			$instance    = new Services\PermissionService($roles, $permissions);
+
+			if ($user = $this->app['auth']->user())
+			{
+				$instance->setUser($user);
+			}
+
+			return $instance;
+		});
 	}
 
 }
