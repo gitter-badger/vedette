@@ -2,4 +2,9 @@
 
 interface BaseModelInterface {
 	
+	/**
+	 * @return string
+	 */
+	public function getKey();
+
 }
